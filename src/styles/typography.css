@@ -1,0 +1,98 @@
+/* Classical display lettering meets the typography of early workstations.
+   Fonts are bundled locally; reading text stays in a quiet humanist sans. */
+:root{
+  --display:'Bodoni Moda',Didot,'Times New Roman',serif;
+  --serif:'Bodoni Moda',Georgia,serif;
+  --sans:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  --mono:'IBM Plex Mono','Courier New',monospace;
+}
+body{font-family:var(--sans);font-weight:400}
+.identity,.footer-bottom .identity{font-family:var(--display);font-weight:600;letter-spacing:-1.3px;font-size:29px}
+.hero h1{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:clamp(62px,12.1vw,188px);
+  line-height:1.12;
+  letter-spacing:-.055em;
+  margin-top:28px;
+  margin-bottom:29px;
+  text-shadow:1px 2px 0 #e8b38d;
+}
+.title-logo{width:.95em;height:.95em}
+.hero h2,.section-title,.about-layout h2,.footer-top p{
+  font-family:var(--display);
+  font-weight:400;
+  letter-spacing:-.045em;
+}
+.hero h2{font-size:clamp(38px,4vw,59px);line-height:1.08;margin-top:23px}
+.hero h2 em,.section-title em,.about-layout em,.footer-top em{font-family:var(--display);font-weight:400}
+.section-title{font-size:clamp(42px,5.4vw,75px);line-height:1.06}
+.about-layout h2{font-size:49px;line-height:1.1}
+.footer-top p{font-size:53px;line-height:1.09}
+.header nav{font-family:var(--mono);font-size:11px}
+.contact-button,.bibliography-link{font-family:var(--mono);font-size:10px;letter-spacing:.1px}
+.hero-eyebrow{font-size:9px;letter-spacing:.7px}
+.micro{font-size:9px;letter-spacing:.7px}
+.hero-copy>.micro{font-size:9px}
+.prototype-tag{font-size:8px}
+.intro{font-size:15px;line-height:1.75}
+.topic{font-family:var(--sans);font-weight:400;font-size:21px;letter-spacing:-.55px}
+.topic-panels h3{font-family:var(--display);font-size:29px;line-height:1.2;letter-spacing:-.6px}
+.topic-description{font-size:14px;line-height:1.8}
+.topic-tags{font-size:8px;letter-spacing:.6px}
+.paper-main h3{font-family:var(--display);font-size:27px;line-height:1.28;letter-spacing:-.3px}
+.paper-authors{font-family:var(--sans);font-size:12px;line-height:1.75}
+.paper-authors strong{font-weight:500}
+.paper-venue{font-family:var(--mono);font-size:10px;line-height:1.9;letter-spacing:-.2px}
+.paper-venue em{font-style:normal}
+.revision-note{font-size:9px}
+.paper-category{font-size:8px}
+.primary-link,.text-link{font-family:var(--mono);font-size:11px}
+.primary-link{gap:31px}
+.profile-links{font-size:8px;letter-spacing:.3px}
+.publication-filter{font-family:var(--mono);font-size:10px}
+.publication-links{font-size:9px}
+.contact-details .footer-contact{font-family:var(--mono);font-size:21px;letter-spacing:-1px}
+.contact-details p{font-family:var(--sans);font-size:12px;line-height:1.75;letter-spacing:0}
+@media(min-width:1600px){.hero h1{font-size:188px}}
+@media(max-width:1000px){
+  .hero h1{font-size:12.1vw}
+  .hero h2{font-size:43px}
+  .topic{font-size:18px}
+  .about-layout h2{font-size:42px}
+  .contact-details .footer-contact{font-size:18px}
+}
+@media(max-width:700px){
+  .header .identity,.footer-bottom .identity{font-size:24px;letter-spacing:-1px}
+  .header nav{font-size:9px;gap:12px}
+  .hero h1{font-size:12.35vw;letter-spacing:-.055em;gap:9px;margin:24px 0 27px;line-height:1.14}
+  .title-logo{width:.88em;height:.88em}
+  .hero h2{font-size:43px;line-height:1.08;letter-spacing:-.045em}
+  .hero-eyebrow{font-size:7.5px;letter-spacing:.4px}
+  .hero-copy>.micro{font-size:8px;letter-spacing:.5px}
+  .intro{font-size:14px;line-height:1.8}
+  .hero-footnote.profile-links{font-size:7.5px}
+  .section-title{font-size:44px;letter-spacing:-.045em}
+  .section-heading>.micro{font-size:8px}
+  .topic{font-size:19px}
+  .topic-panels h3{font-size:27px}
+  .topic-description{font-size:13px}
+  .topic-tags{font-size:7px;letter-spacing:.45px}
+  .paper-main h3{font-size:24px;line-height:1.28;letter-spacing:-.25px}
+  .paper-authors{font-size:11px}
+  .paper-venue{font-size:9px;line-height:1.9}
+  .revision-note{font-size:8px}
+  .paper-category{font-size:8px;letter-spacing:.35px}
+  .publication-status{font-size:7px}
+  .publication-filter{font-size:9px}
+  .publication-controls{gap:18px}
+  .bibliography-link{font-size:8px}
+  .about-layout h2{font-size:40px}
+  .about-profile-links .text-link{font-size:10px}
+  .footer-top p{font-size:44px}
+  .contact-details .footer-contact{font-size:19px;letter-spacing:-.7px}
+  .contact-details p{font-size:11px}
+}
+
+.art-top>.chern-number{font:11px var(--mono);letter-spacing:-.2px}
+@media(max-width:700px){.art-top>.chern-number{font-size:9px}.art-bottom{font-size:6px;letter-spacing:.35px}}

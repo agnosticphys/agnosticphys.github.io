@@ -1,0 +1,26 @@
+{
+  "convergence": [
+    {
+      "N": 128,
+      "Ckubo": -1.9999999999999998,
+      "Cfhs": -2.0,
+      "gap": 0.15717856267231056
+    },
+    {
+      "N": 192,
+      "Ckubo": -2.0000000000000004,
+      "Cfhs": -2.0000000000000004,
+      "gap": 0.15717856267231056
+    },
+    {
+      "N": 256,
+      "Ckubo": -1.9999999999999998,
+      "Cfhs": -1.9999999999999998,
+      "gap": 0.15717856267231056
+    }
+  ],
+  "serializedC": -2.000000000012098,
+  "source": "https://hofstadter.tools/theory/band_structure.html",
+  "coordinates": "u=q*kx; v=ky; field stores Omega_kxky=q*Omega_uv",
+  "convention": "A=i<u|grad u>, dkx wedge dky; uniform-phase Hamiltonian with magnetic sewing at the u boundary"
+}

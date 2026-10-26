@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1000" preserveAspectRatio="xMidYMid slice">
+ <defs>
+  <pattern id="tile" width="56" height="56" patternUnits="userSpaceOnUse"><path d="M56 0H0V56" fill="none" stroke="#58776a" stroke-opacity=".22" stroke-width="1"/><circle cx="28" cy="28" r=".7" fill="#58776a" fill-opacity=".3"/></pattern>
+  <pattern id="lines" width="8" height="12" patternUnits="userSpaceOnUse"><path d="M0 3H8" stroke="#d68865" stroke-width="7"/></pattern>
+  <pattern id="checker" width="36" height="36" patternUnits="userSpaceOnUse"><rect width="36" height="36" fill="#ede5d5"/><path d="M0 0H18V18H0ZM18 18H36V36H18Z" fill="#52675e"/></pattern>
+ </defs>
+ <rect width="1400" height="1000" fill="#bdd3c5"/><rect width="1400" height="1000" fill="url(#tile)"/>
+ <circle cx="1180" cy="210" r="240" fill="url(#lines)" opacity=".5"/>
+ <path d="M0 760L1400 760V1000H0Z" fill="#e5b99f"/>
+ <g fill="none" stroke="#536e62" stroke-opacity=".45" stroke-width="1">
+  <path d="M0 760H1400M0 786H1400M0 821H1400M0 868H1400M0 931H1400M0 999H1400"/>
+  <path d="M0 760L-700 1000M140 760L-420 1000M280 760L-140 1000M420 760L140 1000M560 760L420 1000M700 760V1000M840 760L980 1000M980 760L1260 1000M1120 760L1540 1000M1260 760L1820 1000M1400 760L2100 1000"/>
+ </g>
+ <path d="M44 50H180V83H78V226H44Z" fill="url(#checker)" opacity=".7"/>
+ <path d="M1240 660H1360V693H1273V735H1240Z" fill="url(#checker)" opacity=".65"/>
+</svg>

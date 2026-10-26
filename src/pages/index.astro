@@ -1,0 +1,121 @@
+---
+import '../styles/global.css';
+import '../styles/retro-theme.css';
+import '@fontsource/bodoni-moda/latin-400.css';
+import '@fontsource/bodoni-moda/latin-400-italic.css';
+import '@fontsource/bodoni-moda/latin-600.css';
+import '@fontsource/ibm-plex-sans/latin-400.css';
+import '@fontsource/ibm-plex-sans/latin-500.css';
+import '@fontsource/ibm-plex-mono/latin-400.css';
+import '../styles/typography.css';
+import { publications, profile } from '../data/publications';
+const journalCount = publications.filter(p => p.kind === 'journal').length;
+const preprintCount = publications.length - journalCount;
+const topics = [
+ { id:'geometry', num:'01', title:'Topology & disorder', subtitle:'How topology changes localization.', text:'I study Anderson transitions in chiral symmetry classes and the role of Berry phases and topological defects. My work connects localization phenomena to vortex physics, nonlinear sigma models, and dual descriptions of superconductors.', tags:'ANDERSON TRANSITIONS / BERRY PHASES', image:'topology-disorder.svg', imageAlt:'A wavefunction envelope above a bond-disordered lattice, with a phase-winding inset.', caption:'Random hopping, phase winding, and a localized wavefunction envelope.', link:'https://doi.org/10.1103/PhysRevLett.133.226601', linkText:'Topology and the Anderson transition' },
+ { id:'disorder', num:'02', title:'Quantum spin liquids', subtitle:'Fractional excitations in frustrated magnets.', text:'I investigate topological order and emergent excitations in frustrated magnets, from electric monopoles in Ce-based pyrochlores to spinons and visons in kagome dipolar systems. A central question is how these excitations appear in experiments.', tags:'SPIN LIQUIDS / EMERGENT GAUGE FIELDS', image:'quantum-spin-liquids.svg', imageAlt:'A kagome lattice with alternate resonating bond configurations and spinon and vison excitations.', caption:'Kagome frustration, resonating bonds, and fractional excitations.', link:'https://doi.org/10.21468/SciPostPhys.19.2.040', linkText:'Topological order in kagome dipolar systems' },
+ { id:'collective', num:'03', title:'Correlated matter', subtitle:'Coupled degrees of freedom.', text:'I explore how spin, orbital, and lattice degrees of freedom interact in Mott insulators. Recent work examines electric polarization from multipolar order and spin-lattice routes to topological mechanical boundary modes.', tags:'MULTIPOLAR ORDER / SPIN–LATTICE COUPLING', image:'correlated-matter.svg', imageAlt:'Spins on a frustrated lattice with reference and displaced atomic positions and displacement vectors.', caption:'Spin–lattice coupling: spins and lattice displacements respond together.', link:'https://doi.org/10.1103/pm3h-pz2p', linkText:'Multipolar ferroelectricity in the Mott regime' },
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Pengwei Zhao (赵鹏威), Department of Physics, HKUST. Research on topology, Anderson localization, quantum spin liquids, and correlated matter." />
+    <meta name="robots" content={import.meta.env.PUBLIC_SITE_INDEXABLE === 'true' ? 'index,follow' : 'noindex,nofollow'} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <title>P. W. Zhao — Quantum matter, unexpected forms</title>
+    <link rel="icon" type="image/png" href="/brand/raven-orbit.png" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page-frame">
+      <header class="header">
+        <a class="identity" href="#" aria-label="P. W. Zhao home"><img class="brand-logo" src="/brand/raven-orbit.png" width="48" height="48" alt="" /><span>PWZ<span class="identity-dot">.</span></span></a>
+        <nav aria-label="Main navigation">
+          <a href="#research">Research <span>01</span></a>
+          <a href="#publications">Publications <span>02</span></a>
+          <a href="#about">About <span>03</span></a>
+        </nav>
+        <a class="contact-button" href="#contact">Get in touch <span>↗</span></a>
+      </header>
+      <main id="main">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-eyebrow"><span><i></i> THEORETICAL CONDENSED MATTER PHYSICS</span><span class="prototype-tag">HKUST / HONG KONG</span></div>
+          <h1 id="hero-title"><span class="hero-name">P. W. ZHAO</span><img class="title-logo" src="/brand/raven-orbit.png" width="180" height="180" alt="" /></h1>
+          <div class="hero-bottom">
+            <div class="hero-copy">
+              <p class="micro">A FIELD GUIDE TO QUANTUM MATTER</p>
+              <h2>Order. Disorder.<br /><em>Possibility.</em></h2>
+              <p class="intro">I’m Pengwei Zhao, working on theoretical condensed matter physics at HKUST. I explore topology, disorder, and the collective behavior of frustrated quantum magnets.</p>
+              <a class="primary-link" href="#research">Explore the research <span>↘</span></a>
+              <div class="hero-footnote profile-links"><a href={profile.scholar} target="_blank" rel="noopener noreferrer">GOOGLE SCHOLAR ↗</a><a href={profile.orcid} target="_blank" rel="noopener noreferrer">ORCID ↗</a></div>
+            </div>
+            <figure class="artwork" aria-label="Berry curvature of the lowest Harper–Hofstadter band at flux two fifths">
+              <div class="art-top"><span>FIG. 001 / HARPER–HOFSTADTER</span><span class="chern-number">|C| = 2</span></div>
+              <canvas id="quantum-art" aria-label="The magnetic Brillouin torus of the Harper–Hofstadter model at flux 2/5, lowest band. Surface color encodes Berry-curvature magnitude, from pale mint for weak curvature to coral and copper red for peaks. All curvature has the same negative sign in the stated convention. Surface height also encodes curvature magnitude as an outward relief from the underlying torus."></canvas>
+              <div class="art-bottom"><span>BERRY CURVATURE · Φ/Φ₀ = 2/5</span><button id="motion-toggle" aria-pressed="true"><span class="motion-dot"></span> MOTION ON</button></div>
+              <figcaption class="sr-only">A calculated Harper–Hofstadter lowest-band texture. The torus angles are magnetic Bloch momenta u=5kx and v=ky. Color and outward surface relief share a monotone compressed scale for Berry-curvature magnitude. The data come from a 256 by 256 momentum grid; the Chern number is independently checked by the curvature integral and gauge-invariant lattice links. The torus embedding, metallic illumination, and curvature-height scale are artistic choices.</figcaption>
+            </figure>
+          </div>
+        </section>
+        <div class="ribbon" aria-hidden="true"><span>QUANTUM MATTER</span><b>✳</b><span>TOPOLOGY</span><b>✳</b><span>LOCALIZATION</span><b>✳</b><span>SPIN LIQUIDS</span><b>✳</b></div>
+        <section id="research" class="research-section section-pad">
+          <div class="section-heading"><p class="micro">01 / RESEARCH DIRECTIONS</p><span class="micro aside-label">FOLLOWING THE QUESTIONS</span></div>
+          <h2 class="section-title">Different questions.<br /><em>Connected ideas.</em></h2>
+          <div class="research-layout">
+            <div class="topic-list" role="tablist" aria-label="Research directions" aria-orientation="vertical">
+              {topics.map((topic, index) => <button role="tab" id={`tab-${topic.id}`} aria-controls={`panel-${topic.id}`} aria-selected={index===0 ? 'true':'false'} tabindex={index===0 ? 0 : -1} data-topic={topic.id} class={index===0?'topic active':'topic'}><span class="topic-num">{topic.num}</span><span>{topic.title}</span><span class="topic-arrow">↗</span></button>)}
+              <p class="section-note">Three perspectives on how quantum<br />matter organizes, moves, and responds.</p>
+            </div>
+            <div class="topic-panels">
+              {topics.map((topic,index)=><article role="tabpanel" id={`panel-${topic.id}`} aria-labelledby={`tab-${topic.id}`} tabindex="0" hidden={index!==0}>
+                <figure class="research-figure"><img src={`/research/${topic.image}`} width="600" height="360" alt={topic.imageAlt} /><figcaption>{topic.caption}<span>Conceptual schematic</span></figcaption></figure>
+                <p class="micro topic-tags">{topic.tags}</p><h3>{topic.subtitle}</h3><p class="topic-description">{topic.text}</p><a class="research-paper-link" href={topic.link} target="_blank" rel="noopener noreferrer">{topic.linkText} <span>↗</span></a>
+              </article>)}
+            </div>
+          </div>
+        </section>
+        <section id="publications" class="publications-section section-pad">
+          <div class="section-heading"><p class="micro">02 / PUBLICATIONS & PREPRINTS</p><a class="micro aside-label scholar-link" href={profile.scholar} target="_blank" rel="noopener noreferrer">GOOGLE SCHOLAR ↗</a></div>
+          <div class="publications-heading"><h2 class="section-title">The paper trail<span>.</span></h2><a class="bibliography-link" href="/publications.bib" download="pengwei-zhao.bib">BIBTEX ↓</a></div>
+          <p class="publication-intro">Topology, disorder, and emergent phenomena in quantum matter.</p>
+          <div class="publication-controls" role="group" aria-label="Filter publications">
+            <button class="publication-filter active" data-filter="all" aria-pressed="true" aria-controls="publication-list">All work <span>{publications.length}</span></button>
+            <button class="publication-filter" data-filter="journal" aria-pressed="false" aria-controls="publication-list">Journal articles <span>{journalCount}</span></button>
+            <button class="publication-filter" data-filter="preprint" aria-pressed="false" aria-controls="publication-list">Preprints <span>{preprintCount}</span></button>
+          </div>
+          <p class="sr-only" id="publication-count" aria-live="polite">{publications.length} works shown</p>
+          <div id="publication-list">
+            {publications.map((paper, index) => <article class="publication-entry" id={paper.id} data-kind={paper.kind}>
+              <div class="paper-index"><span>{String(index + 1).padStart(2, '0')}</span><span>{paper.year}</span></div>
+              <div class="paper-main">
+                <p class="micro paper-category">{paper.topic} <span class:list={['publication-status', { preprint: paper.kind === 'preprint' }]}>{paper.kind === 'journal' ? 'JOURNAL ARTICLE' : 'PREPRINT'}</span></p>
+                <h3><a href={paper.doi ? `https://doi.org/${paper.doi}` : `https://arxiv.org/abs/${paper.arxiv}`} target="_blank" rel="noopener noreferrer">{paper.title}</a></h3>
+                <p class="paper-authors">{paper.authors.map((author, i) => <span>{i > 0 && ', '}{author === profile.fullName ? <strong>{author}</strong> : author}</span>)}</p>
+                <p class="paper-venue">{paper.kind === 'journal' ? <><em>{paper.journal}</em> <strong>{paper.volume}</strong>, {paper.pages} ({paper.year})</> : <>arXiv:{paper.arxiv} ({paper.year}){paper.revised && <span class="revision-note"> · Revised {paper.revised}</span>}</>}</p>
+                <div class="publication-links">
+                  {paper.doi && <a href={`https://doi.org/${paper.doi}`} target="_blank" rel="noopener noreferrer" aria-label={`Journal article: ${paper.title}`}>DOI ↗</a>}
+                  <a href={`https://arxiv.org/abs/${paper.arxiv}`} target="_blank" rel="noopener noreferrer" aria-label={`arXiv: ${paper.title}`}>arXiv ↗</a>
+                  <a href={`https://arxiv.org/pdf/${paper.arxiv}`} target="_blank" rel="noopener noreferrer" aria-label={`Read PDF: ${paper.title}`}>PDF ↗</a>
+                </div>
+              </div>
+            </article>)}
+          </div>
+        </section>
+        <section id="about" class="about-section section-pad">
+          <div class="section-heading"><p class="micro">03 / BEHIND THE QUESTIONS</p><span class="micro">ABOUT</span></div>
+          <div class="about-layout"><div class="about-symbol" aria-hidden="true">ψ<span>(r)</span></div><div><p class="micro about-name">PENGWEI ZHAO / 赵鹏威</p><h2>Curiosity is<br /><em>a good starting point.</em></h2><p>I work on theoretical condensed matter physics in the Department of Physics at The Hong Kong University of Science and Technology.</p><p>My research focuses on topology and disorder, quantum spin liquids, and correlated quantum matter.</p><div class="about-profile-links"><a class="text-link" href={profile.orcid} target="_blank" rel="noopener noreferrer">ORCID <span>↗</span></a><a class="text-link" href={profile.scholar} target="_blank" rel="noopener noreferrer">Google Scholar <span>↗</span></a></div></div></div>
+        </section>
+        <footer id="contact" class="footer">
+          <div class="footer-top"><p>There is always<br /><em>another question.</em></p><div class="contact-details"><a href={`mailto:${profile.email}`} class="footer-contact">{profile.email} <span>↗</span></a><p>Department of Physics<br />The Hong Kong University of Science and Technology</p></div></div>
+          <div class="footer-bottom"><a class="identity" href="#"><img class="brand-logo" src="/brand/raven-orbit.png" width="48" height="48" alt="" />PWZ.</a><span>© 2026 P. W. ZHAO</span><a href="#">BACK TO THE TOP ↑</a></div>
+        </footer>
+      </main>
+    </div>
+
+    <script src="/interactions.js" is:inline></script>
+    <script type="module" src="/artwork.js" is:inline></script>
+  </body>
+</html>

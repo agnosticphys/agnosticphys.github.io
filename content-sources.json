@@ -1,0 +1,45 @@
+{
+  "verified_on": "2026-10-26",
+  "identity": {
+    "name": "Pengwei Zhao / 赵鹏威",
+    "scholar": "https://scholar.google.com/citations?user=Ab7DeeQAAAAJ&hl=zh-CN",
+    "orcid": "https://orcid.org/0009-0007-0862-5960",
+    "affiliation_source": "Google Scholar profile: Department of Physics, Hong Kong University of Science and Technology; verified ust.hk email domain",
+    "email_source": "Public ORCID record: pwzhao@ust.hk",
+    "rank_and_education": "Not asserted. Owner requested prioritizing papers and keeping biography brief. No current academic rank or degree dates were supplied."
+  },
+  "scope": {
+    "scholar_records": 13,
+    "conference_abstracts_excluded_from_paper_list": 3,
+    "unique_research_works": 10,
+    "journal_articles": 7,
+    "preprints": 3,
+    "ordering": "Descending journal publication date or initial preprint submission date; revised preprint dates shown separately."
+  },
+  "reconciliations": [
+    {
+      "arxiv": "2412.21112",
+      "change": "Scholar lists the 2024 preprint; arXiv journal reference and the SciPost publisher PDF confirm SciPost Physics 19, 040 (2025). Count once as a journal article.",
+      "sources": ["https://arxiv.org/abs/2412.21112", "https://scipost.org/SciPostPhys.19.2.040/pdf", "https://doi.org/10.21468/SciPostPhys.19.2.040"]
+    },
+    {
+      "arxiv": "2509.16555",
+      "change": "Use the v3 title dated 2026-10-19, Numerical and theoretical studies of the Anderson transition in the chiral symmetry classes with weak topology, rather than Scholar's older title. Initial submission year remains 2025.",
+      "sources": ["https://arxiv.org/abs/2509.16555"]
+    }
+  ],
+  "paper_sources": [
+    {"id":"zhao2026spinice","sources":["https://orcid.org/0009-0007-0862-5960","https://arxiv.org/abs/2505.07805","https://journals.aps.org/prb/abstract/10.1103/kf3x-rhl1"]},
+    {"id":"shindou2026temporal","sources":["https://arxiv.org/abs/2603.09422"]},
+    {"id":"song2026magnetopological","sources":["https://arxiv.org/abs/2602.12168"]},
+    {"id":"zhao2025anderson","sources":["https://orcid.org/0009-0007-0862-5960","https://arxiv.org/abs/2506.21050","https://journals.aps.org/prb/abstract/10.1103/nxdq-8bq1"]},
+    {"id":"kuang2025anderson","sources":["https://arxiv.org/abs/2509.16555"]},
+    {"id":"zhao2025kagome","sources":["https://arxiv.org/abs/2412.21112","https://scipost.org/SciPostPhys.19.2.040/pdf"]},
+    {"id":"zhao2025multipolar","sources":["https://orcid.org/0009-0007-0862-5960","https://arxiv.org/abs/2412.18942","https://doi.org/10.1103/pm3h-pz2p"]},
+    {"id":"shindou2025sigma","sources":["https://orcid.org/0009-0007-0862-5960","https://arxiv.org/abs/2503.18969"]},
+    {"id":"zhao2024topological","sources":["https://orcid.org/0009-0007-0862-5960","https://arxiv.org/abs/2402.02310"]},
+    {"id":"zhao2024monopoles","sources":["https://orcid.org/0009-0007-0862-5960","https://arxiv.org/abs/2404.15902"]}
+  ],
+  "research_copy": "Original short synthesis of the linked publications, written for the website. Does not assert results from unpublished private projects.",
+  "disambiguation": "Several other Pengwei Zhao profiles concern nuclear physics or cosmic-ray physics. Their publications, appointments, and educational histories were excluded. Identity is anchored to the two identifiers supplied by the owner."
+}

@@ -1,0 +1,45 @@
+name: Deploy academic website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+env:
+  ASTRO_TELEMETRY_DISABLED: '1'
+  # Start on the GitHub address. Set SITE_URL after binding the custom domain.
+  SITE_URL: ${{ vars.SITE_URL || 'https://agnosticphys.github.io' }}
+  PUBLIC_SITE_INDEXABLE: ${{ vars.SITE_INDEXABLE || 'false' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out website source
+        uses: actions/checkout@v7
+      - name: Build and upload static website
+        uses: withastro/action@v6
+        with:
+          node-version: '24'
+          package-manager: npm@11.20.0
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

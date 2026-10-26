@@ -1,0 +1,173 @@
+/* A sun-faded desktop / printed research folio. Flat inks, hard edges, and
+   architectural grids replace the original lavender color fields. */
+:root{
+  --ink:#293932;
+  --paper:#f1eadd;
+  --muted:#68716a;
+  --line:#a9b3a5;
+  --pink:#d98b70;
+  --mint:#d5e1d1;
+  --peach:#ecd0bc;
+  --charcoal:#3b4940;
+}
+body{
+  background:#bdd3c5 url('/texture/vapor-wallpaper.svg') center top / cover fixed;
+  padding:26px 0;
+}
+.page-frame{
+  margin:0 auto;
+  width:calc(100% - 60px);
+  max-width:1420px;
+  border:1px solid var(--charcoal);
+  background:var(--paper);
+  box-shadow:8px 8px 0 #324b3a55, inset 0 0 0 2px #fff8e9;
+}
+.header{
+  position:relative;
+  height:86px;
+  margin:0;
+  padding:0 4.6%;
+  background:#e3e4d8;
+  border-bottom:1px solid var(--charcoal);
+  box-shadow:inset 0 2px #fff9ec,inset 0 -3px #b7bdae;
+}
+.header nav{font:11px var(--mono)}
+.header nav span{color:#717b6b}
+.identity-dot{color:#a45e44}
+.contact-button,.bibliography-link{
+  background:#f2ecdf;
+  border:1px solid #627163;
+  color:var(--ink);
+  box-shadow:2px 2px 0 #8b9784,inset 1px 1px #fffcf4;
+}
+.contact-button:hover,.bibliography-link:hover{background:#dae3d2;border-color:#445d4c;color:#253b30;box-shadow:1px 1px 0 #8b9784}
+.hero{
+  position:relative;
+  padding-bottom:64px;
+  background-color:var(--peach);
+  background-image:radial-gradient(#615c4a22 .65px,transparent .8px);
+  background-size:9px 9px;
+  isolation:isolate;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  z-index:-1;
+  width:290px;height:290px;right:5.5%;top:20px;
+  border-radius:50%;
+  background:repeating-linear-gradient(0deg,#c57d541c 0 7px,transparent 7px 12px);
+}
+.hero::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:12px;
+  border-top:1px solid #67735d;border-bottom:1px solid #67735d;
+  background:repeating-conic-gradient(#4b5d4c 0 25%,#eee4cf 0 50%) 0 0 / 20px 20px;
+}
+.hero-eyebrow,.micro{color:#3d5847}
+.hero-eyebrow i{background:#6b7e53}
+.prototype-tag{color:#6f675b}
+.hero h1{font-size:clamp(66px,13.4vw,207px);text-shadow:2px 2px 0 #e8b38d}
+.hero-copy{padding-top:14px}
+.intro,.topic-description,.about-layout p:not(.content-note){color:#4c5d53}
+.hero-footnote.profile-links{color:#365447}
+.artwork{
+  background:#d7e2d3;
+  border:1px solid #4c6151;
+  box-shadow:5px 5px 0 #7a8b6a;
+}
+.art-top{
+  top:0;left:0;right:0;height:33px;
+  padding:0 12px;
+  color:#394d3d;
+  background:#e8e7da;
+  border-bottom:1px solid #7d8b76;
+  box-shadow:inset 0 2px #faf7eb;
+}
+.art-top>span:last-child{font-size:16px}
+.art-bottom{color:#344b3c}
+.artwork canvas{top:33px;height:calc(100% - 33px)}
+.ribbon{background:#354d3e;color:#eee6d3;border-bottom:1px solid #203b2b;font-size:9px}
+.ribbon b{color:#ecb08d}
+.research-section{
+  background-color:#dce4d3;
+  background-image:linear-gradient(#526c5010 1px,transparent 1px),linear-gradient(90deg,#526c5010 1px,transparent 1px);
+  background-size:36px 36px;
+  border-bottom:1px solid #7f9279;
+}
+.aside-label{color:#697462}
+.topic{color:#66735f;border-color:#9aa88f}
+.topic:last-of-type{border-color:#9aa88f}
+.topic.active,.topic:hover{color:#1c4b37}
+.topic.active{background:#f6f0db55;box-shadow:inset 3px 0 #56754b;padding-left:14px;padding-right:10px}
+.section-note{color:#65715e}
+.research-figure img{border:1px solid #657660;background:#eee5d5;box-shadow:4px 4px 0 #a8b69a}
+.research-figure figcaption{color:#52634f}
+.research-figure figcaption span{color:#64765e}
+.research-paper-link{color:#3e5843;border-color:#899b7a}
+.research-paper-link:hover{color:#182f20;border-color:#182f20}
+.publications-section{
+  background:#f2eddf;
+  border-top:0;
+  border-bottom:1px solid #8a9980;
+  position:relative;
+}
+.publications-section::before{
+  content:'';position:absolute;left:21px;top:0;bottom:0;border-left:1px solid #ba7c6344;
+}
+.publications-heading .section-title>span{color:#b67051}
+.publication-intro,.paper-authors{color:#647062}
+.publication-filter{color:#61705c}
+.publication-filter.active{color:#244831;border-color:#244831}
+.publication-filter:hover{color:#244831}
+.publication-entry,.publication-entry:last-child{border-color:#b9c0ad}
+.paper-index{color:#7c8973}
+.paper-index span:last-child,.paper-category{color:#506449}
+.publication-status{color:#47643e;border-color:#a6b699;background:#dce7d04d}
+.publication-status.preprint{color:#8a5139;border-color:#cca488;background:#eac5ac4d}
+.paper-main h3 a:hover{color:#28533b}
+.paper-authors strong{color:#2f4535}
+.paper-venue{color:#556749}
+.revision-note{color:#7b7763}
+.publication-links{color:#31543e}
+.publication-links a{border-color:#a6b698}
+.publication-links a:hover{border-color:#31543e}
+.about-section{
+  background-color:#e8c8b2;
+  background-image:radial-gradient(#5c5d4222 .65px,transparent .8px);
+  background-size:9px 9px;
+}
+.about-symbol{color:#425c43;text-shadow:3px 2px 0 #f2dbbf}
+.about-symbol:before{border-color:#778567}
+.about-profile-links .text-link{color:#31523b;border-color:#7f906f}
+.footer{
+  background:#c4d2ba;
+  color:#2a4632;
+  border-top:12px solid transparent;
+  border-image:repeating-linear-gradient(90deg,#3f5740 0 12px,#eee7d5 12px 24px) 12;
+}
+.footer-contact{color:#2a4632;border-color:#829677}
+.footer-contact span{color:#a35e40}
+.contact-details p{color:#4d6545}
+.footer-bottom{border-color:#8d9e7f}
+.footer-bottom .identity{color:var(--blue)}
+.footer-bottom .brand-logo{filter:none}
+::selection{background:#d8aa7d;color:#203b27}
+@media(min-width:1600px){.page-frame{margin:0 auto}.hero h1{font-size:207px}}
+@media(max-width:1000px){.page-frame{width:calc(100% - 36px)}body{padding:18px 0}.hero h1{font-size:13.55vw}}
+@media(max-width:700px){
+  body{padding:10px 0;background-attachment:scroll}
+  .page-frame{width:calc(100% - 20px);margin:0 auto;box-shadow:4px 4px 0 #324b3a55}
+  .header{height:78px;margin:0;padding:0 5%}
+  .header nav{font-size:9px;gap:14px}
+  .hero{padding-bottom:43px}
+  .hero h1{font-size:13.55vw;gap:7px;text-shadow:1px 1px #e8b38d}
+  .hero::before{width:180px;height:180px;right:2%;top:25px}
+  .hero-copy{padding-top:0}
+  .hero h2{font-size:40px}
+  .artwork{box-shadow:3px 3px 0 #7a8b6a}
+  .art-top{height:28px;padding:0 9px}
+  .artwork canvas{top:28px;height:calc(100% - 28px)}
+  .ribbon{font-size:7px}
+  .topic.active{padding-left:12px;padding-right:8px}
+  .publications-section::before{left:10px}
+  .research-figure img{box-shadow:3px 3px 0 #a8b69a}
+}
