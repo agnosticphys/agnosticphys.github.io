@@ -3,10 +3,9 @@ import { bandData, bandPoint, curvatureColor } from './hofstadter-band.js';
 (() => {
   const canvas = document.getElementById('quantum-art');
   const ctx = canvas.getContext('2d');
-  const toggle = document.getElementById('motion-toggle');
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
   const TAU = Math.PI * 2;
-  let running = !reduced.matches, visible = true, frame = 0, angle = .32, width = 0, height = 0, last = 0;
+  let running = document.documentElement.dataset.motion !== 'off', visible = true, frame = 0, angle = .32, width = 0, height = 0, last = 0;
 
   // Geometry and observables are static in momentum space. Only the view rotates.
   const nu = 96, nv = 80;
@@ -76,9 +75,8 @@ import { bandData, bandPoint, curvatureColor } from './hofstadter-band.js';
     for(const x of [22,width-22]){ctx.beginPath();ctx.moveTo(x-5,height*.5);ctx.lineTo(x+5,height*.5);ctx.moveTo(x,height*.5-5);ctx.lineTo(x,height*.5+5);ctx.stroke();}
   }
   function tick(time){frame=0;if(!running||!visible||document.hidden)return;if(time-last>40){const dt=last?Math.min((time-last)/1000,.06):.04;angle+=dt*.10;draw();last=time;}frame=requestAnimationFrame(tick);}
-  function sync(){toggle.setAttribute('aria-pressed',String(running));toggle.innerHTML=`<span class="motion-dot"></span> MOTION ${running?'ON':'OFF'}`;if(frame)cancelAnimationFrame(frame);frame=0;if(running&&visible&&!document.hidden){last=0;frame=requestAnimationFrame(tick);}else draw();}
-  toggle.addEventListener('click',()=>{running=!running;sync();});
-  reduced.addEventListener('change',()=>{running=!reduced.matches;sync();});
+  function sync(){if(frame)cancelAnimationFrame(frame);frame=0;if(running&&visible&&!document.hidden){last=0;frame=requestAnimationFrame(tick);}else draw();}
+  document.addEventListener('site-motion-change',event=>{running=event.detail.enabled;sync();});
   document.addEventListener('visibilitychange',sync);
   new ResizeObserver(size).observe(canvas);
   new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync();}).observe(canvas);

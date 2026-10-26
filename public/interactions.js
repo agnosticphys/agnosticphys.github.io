@@ -7,6 +7,7 @@ function activateTab(tab, focus = false) {
     item.classList.toggle('active', active);
     document.getElementById(item.getAttribute('aria-controls')).hidden = !active;
   });
+  document.dispatchEvent(new CustomEvent('site-content-change', { detail: { elements: [document.getElementById(tab.getAttribute('aria-controls'))] } }));
   if (focus) tab.focus();
 }
 tabs.forEach((tab, index) => {
@@ -36,5 +37,6 @@ filters.forEach(button => button.addEventListener('click', () => {
     paper.hidden = !show;
     if (show) count++;
   });
+  document.dispatchEvent(new CustomEvent('site-content-change', { detail: { elements: papers.filter(paper => !paper.hidden) } }));
   document.getElementById('publication-count').textContent = `${count} ${count === 1 ? 'work' : 'works'} shown`;
 }));

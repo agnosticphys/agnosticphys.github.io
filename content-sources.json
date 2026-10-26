@@ -20,25 +20,110 @@
     {
       "arxiv": "2412.21112",
       "change": "Scholar lists the 2024 preprint; arXiv journal reference and the SciPost publisher PDF confirm SciPost Physics 19, 040 (2025). Count once as a journal article.",
-      "sources": ["https://arxiv.org/abs/2412.21112", "https://scipost.org/SciPostPhys.19.2.040/pdf", "https://doi.org/10.21468/SciPostPhys.19.2.040"]
+      "sources": [
+        "https://arxiv.org/abs/2412.21112",
+        "https://scipost.org/SciPostPhys.19.2.040/pdf",
+        "https://doi.org/10.21468/SciPostPhys.19.2.040"
+      ]
     },
     {
       "arxiv": "2509.16555",
       "change": "Use the v3 title dated 2026-10-19, Numerical and theoretical studies of the Anderson transition in the chiral symmetry classes with weak topology, rather than Scholar's older title. Initial submission year remains 2025.",
-      "sources": ["https://arxiv.org/abs/2509.16555"]
+      "sources": [
+        "https://arxiv.org/abs/2509.16555"
+      ]
     }
   ],
   "paper_sources": [
-    {"id":"zhao2026spinice","sources":["https://orcid.org/0009-0007-0862-5960","https://arxiv.org/abs/2505.07805","https://journals.aps.org/prb/abstract/10.1103/kf3x-rhl1"]},
-    {"id":"shindou2026temporal","sources":["https://arxiv.org/abs/2603.09422"]},
-    {"id":"song2026magnetopological","sources":["https://arxiv.org/abs/2602.12168"]},
-    {"id":"zhao2025anderson","sources":["https://orcid.org/0009-0007-0862-5960","https://arxiv.org/abs/2506.21050","https://journals.aps.org/prb/abstract/10.1103/nxdq-8bq1"]},
-    {"id":"kuang2025anderson","sources":["https://arxiv.org/abs/2509.16555"]},
-    {"id":"zhao2025kagome","sources":["https://arxiv.org/abs/2412.21112","https://scipost.org/SciPostPhys.19.2.040/pdf"]},
-    {"id":"zhao2025multipolar","sources":["https://orcid.org/0009-0007-0862-5960","https://arxiv.org/abs/2412.18942","https://doi.org/10.1103/pm3h-pz2p"]},
-    {"id":"shindou2025sigma","sources":["https://orcid.org/0009-0007-0862-5960","https://arxiv.org/abs/2503.18969"]},
-    {"id":"zhao2024topological","sources":["https://orcid.org/0009-0007-0862-5960","https://arxiv.org/abs/2402.02310"]},
-    {"id":"zhao2024monopoles","sources":["https://orcid.org/0009-0007-0862-5960","https://arxiv.org/abs/2404.15902"]}
+    {
+      "id": "zhao2026spinice",
+      "sources": [
+        "https://orcid.org/0009-0007-0862-5960",
+        "https://arxiv.org/abs/2505.07805",
+        "https://journals.aps.org/prb/abstract/10.1103/kf3x-rhl1"
+      ]
+    },
+    {
+      "id": "shindou2026temporal",
+      "sources": [
+        "https://arxiv.org/abs/2603.09422"
+      ]
+    },
+    {
+      "id": "song2026magnetopological",
+      "sources": [
+        "https://arxiv.org/abs/2602.12168"
+      ]
+    },
+    {
+      "id": "zhao2025anderson",
+      "sources": [
+        "https://orcid.org/0009-0007-0862-5960",
+        "https://arxiv.org/abs/2506.21050",
+        "https://journals.aps.org/prb/abstract/10.1103/nxdq-8bq1"
+      ]
+    },
+    {
+      "id": "kuang2025anderson",
+      "sources": [
+        "https://arxiv.org/abs/2509.16555"
+      ]
+    },
+    {
+      "id": "zhao2025kagome",
+      "sources": [
+        "https://arxiv.org/abs/2412.21112",
+        "https://scipost.org/SciPostPhys.19.2.040/pdf"
+      ]
+    },
+    {
+      "id": "zhao2025multipolar",
+      "sources": [
+        "https://orcid.org/0009-0007-0862-5960",
+        "https://arxiv.org/abs/2412.18942",
+        "https://doi.org/10.1103/pm3h-pz2p"
+      ]
+    },
+    {
+      "id": "shindou2025sigma",
+      "sources": [
+        "https://orcid.org/0009-0007-0862-5960",
+        "https://arxiv.org/abs/2503.18969"
+      ]
+    },
+    {
+      "id": "zhao2024topological",
+      "sources": [
+        "https://orcid.org/0009-0007-0862-5960",
+        "https://arxiv.org/abs/2402.02310"
+      ]
+    },
+    {
+      "id": "zhao2024monopoles",
+      "sources": [
+        "https://orcid.org/0009-0007-0862-5960",
+        "https://arxiv.org/abs/2404.15902"
+      ]
+    }
+  ],
+  "research_animation_sources": [
+    {
+      "figure": "RVBResonance.astro",
+      "concept": "72-site finite kagome patch and four exact nearest-neighbour perfect matchings, generated and checked by scripts/generate-rvb-lattice.py. Alternating visual emphasis suggests an RVB superposition, not classical switching or calculated dynamics.",
+      "source": "https://arxiv.org/abs/1202.0947"
+    },
+    {
+      "figure": "SpinWave.astro",
+      "concept": "An illustrative fixed-length conical spin wave: spatial phase gradient with common precession frequency in an ordered magnet. Projection and speed are artistic choices, not a material-specific calculation.",
+      "source": "https://arxiv.org/abs/1901.07021"
+    },
+    {
+      "figure": "AndersonLocalization.astro",
+      "concept": "Exact unitary wavepacket evolution in a finite 25x25 onsite-disordered square-lattice Anderson model, with a 29x29 boundary check. This generic model does not preserve chiral symmetry; it is not the model/result of the linked publication. Rendering height/color and playback are visualization choices.",
+      "source": "https://www.nature.com/articles/nature07000",
+      "local_verification": "anderson-verification.json",
+      "generator": "scripts/generate-anderson.py"
+    }
   ],
   "research_copy": "Original short synthesis of the linked publications, written for the website. Does not assert results from unpublished private projects.",
   "disambiguation": "Several other Pengwei Zhao profiles concern nuclear physics or cosmic-ray physics. Their publications, appointments, and educational histories were excluded. Identity is anchored to the two identifiers supplied by the owner."

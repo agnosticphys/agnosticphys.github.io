@@ -1,0 +1,20 @@
+---
+import lattice from '../data/rvb-lattice.json';
+const edge=([i,j]:number[])=>({x1:lattice.nodes[i].x,y1:lattice.nodes[i].y,x2:lattice.nodes[j].x,y2:lattice.nodes[j].y});
+---
+<svg class="rvb-figure" viewBox="0 0 600 360" role="img" aria-labelledby="rvb-title rvb-desc">
+  <title id="rvb-title">Resonating singlets across a kagome lattice</title>
+  <desc id="rvb-desc">A complete finite patch of 72 kagome sites with corner-sharing triangles and hexagonal openings. Four valid nearest-neighbour singlet coverings receive alternating visual emphasis; each covering pairs every site exactly once. This is an illustrative RVB superposition, not classical switching or simulated dynamics.</desc>
+  <defs>
+    <pattern id="rvb-grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#677a5a" stroke-opacity=".08" stroke-width=".7"/></pattern>
+    <radialGradient id="rvb-bead" cx=".3" cy=".25"><stop stop-color="#eef1dc"/><stop offset=".35" stop-color="#9eb595"/><stop offset="1" stop-color="#355f48"/></radialGradient>
+    <radialGradient id="rvb-paper"><stop stop-color="#f6edda"/><stop offset="1" stop-color="#e8dcc4"/></radialGradient>
+  </defs>
+  <rect width="600" height="360" fill="url(#rvb-paper)"/>
+  <rect width="600" height="360" fill="url(#rvb-grid)"/>
+  <g class="rvb-lattice" aria-hidden="true">{lattice.edges.map(e=><line {...edge(e)}/>)}</g>
+  {lattice.coverings.map((cover,index)=><g class={`rvb-covering rvb-cover-${index}`} aria-hidden="true" style={`animation-delay:-${index*4}s`}>
+    {cover.map(e=><g><line class="rvb-bond-shadow" {...edge(e)}/><line class="rvb-bond" {...edge(e)}/><line class="rvb-bond-sheen" {...edge(e)}/></g>)}
+  </g>)}
+  <g aria-hidden="true">{lattice.nodes.map(p=><circle class="rvb-spin" cx={p.x} cy={p.y} r="4.5"/>)}</g>
+</svg>

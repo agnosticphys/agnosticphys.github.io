@@ -8,13 +8,17 @@ import '@fontsource/ibm-plex-sans/latin-400.css';
 import '@fontsource/ibm-plex-sans/latin-500.css';
 import '@fontsource/ibm-plex-mono/latin-400.css';
 import '../styles/typography.css';
+import '../styles/motion.css';
+import AndersonLocalization from '../components/AndersonLocalization.astro';
+import RVBResonance from '../components/RVBResonance.astro';
+import SpinWave from '../components/SpinWave.astro';
 import { publications, profile } from '../data/publications';
 const journalCount = publications.filter(p => p.kind === 'journal').length;
 const preprintCount = publications.length - journalCount;
 const topics = [
- { id:'geometry', num:'01', title:'Topology & disorder', subtitle:'How topology changes localization.', text:'I study Anderson transitions in chiral symmetry classes and the role of Berry phases and topological defects. My work connects localization phenomena to vortex physics, nonlinear sigma models, and dual descriptions of superconductors.', tags:'ANDERSON TRANSITIONS / BERRY PHASES', image:'topology-disorder.svg', imageAlt:'A wavefunction envelope above a bond-disordered lattice, with a phase-winding inset.', caption:'Random hopping, phase winding, and a localized wavefunction envelope.', link:'https://doi.org/10.1103/PhysRevLett.133.226601', linkText:'Topology and the Anderson transition' },
- { id:'disorder', num:'02', title:'Quantum spin liquids', subtitle:'Fractional excitations in frustrated magnets.', text:'I investigate topological order and emergent excitations in frustrated magnets, from electric monopoles in Ce-based pyrochlores to spinons and visons in kagome dipolar systems. A central question is how these excitations appear in experiments.', tags:'SPIN LIQUIDS / EMERGENT GAUGE FIELDS', image:'quantum-spin-liquids.svg', imageAlt:'A kagome lattice with alternate resonating bond configurations and spinon and vison excitations.', caption:'Kagome frustration, resonating bonds, and fractional excitations.', link:'https://doi.org/10.21468/SciPostPhys.19.2.040', linkText:'Topological order in kagome dipolar systems' },
- { id:'collective', num:'03', title:'Correlated matter', subtitle:'Coupled degrees of freedom.', text:'I explore how spin, orbital, and lattice degrees of freedom interact in Mott insulators. Recent work examines electric polarization from multipolar order and spin-lattice routes to topological mechanical boundary modes.', tags:'MULTIPOLAR ORDER / SPIN–LATTICE COUPLING', image:'correlated-matter.svg', imageAlt:'Spins on a frustrated lattice with reference and displaced atomic positions and displacement vectors.', caption:'Spin–lattice coupling: spins and lattice displacements respond together.', link:'https://doi.org/10.1103/pm3h-pz2p', linkText:'Multipolar ferroelectricity in the Mott regime' },
+ { id:'geometry', num:'01', title:'Topology & disorder', subtitle:'How topology changes localization.', text:'I study Anderson transitions in chiral symmetry classes and the role of Berry phases and topological defects. My work connects localization phenomena to vortex physics, nonlinear sigma models, and dual descriptions of superconductors.', tags:'ANDERSON TRANSITIONS / BERRY PHASES', image:'topology-disorder-art.svg', imageAlt:'A wavefunction envelope above a bond-disordered lattice, with a phase-winding inset.', caption:'Anderson localization.', link:'https://doi.org/10.1103/PhysRevLett.133.226601', linkText:'Topology and the Anderson transition' },
+ { id:'disorder', num:'02', title:'Quantum spin liquids', subtitle:'Fractional excitations in frustrated magnets.', text:'I investigate topological order and emergent excitations in frustrated magnets, from electric monopoles in Ce-based pyrochlores to spinons and visons in kagome dipolar systems. A central question is how these excitations appear in experiments.', tags:'SPIN LIQUIDS / EMERGENT GAUGE FIELDS', image:'quantum-spin-liquids.svg', imageAlt:'A kagome lattice with alternate resonating bond configurations and spinon and vison excitations.', caption:'Resonating singlets on a kagome lattice.', link:'https://doi.org/10.21468/SciPostPhys.19.2.040', linkText:'Topological order in kagome dipolar systems' },
+ { id:'collective', num:'03', title:'Correlated matter', subtitle:'Coupled degrees of freedom.', text:'I explore how spin, orbital, and lattice degrees of freedom interact in Mott insulators. Recent work examines electric polarization from multipolar order and spin-lattice routes to topological mechanical boundary modes.', tags:'MULTIPOLAR ORDER / SPIN–LATTICE COUPLING', image:'correlated-matter.svg', imageAlt:'Spins on a frustrated lattice with reference and displaced atomic positions and displacement vectors.', caption:'A collective spin wave.', link:'https://doi.org/10.1103/pm3h-pz2p', linkText:'Multipolar ferroelectricity in the Mott regime' },
 ];
 ---
 <!doctype html>
@@ -29,6 +33,7 @@ const topics = [
     <link rel="icon" type="image/png" href="/brand/raven-orbit.png" />
   </head>
   <body>
+    <div class="reading-progress" aria-hidden="true"></div>
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="page-frame">
       <header class="header">
@@ -60,7 +65,7 @@ const topics = [
             </figure>
           </div>
         </section>
-        <div class="ribbon" aria-hidden="true"><span>QUANTUM MATTER</span><b>✳</b><span>TOPOLOGY</span><b>✳</b><span>LOCALIZATION</span><b>✳</b><span>SPIN LIQUIDS</span><b>✳</b></div>
+        <div class="ribbon" aria-hidden="true"><div class="ribbon-track">{[0,1].map(() => <div class="ribbon-group"><span>QUANTUM MATTER</span><b>✳</b><span>TOPOLOGY</span><b>✳</b><span>LOCALIZATION</span><b>✳</b><span>SPIN LIQUIDS</span><b>✳</b></div>)}</div></div>
         <section id="research" class="research-section section-pad">
           <div class="section-heading"><p class="micro">01 / RESEARCH DIRECTIONS</p><span class="micro aside-label">FOLLOWING THE QUESTIONS</span></div>
           <h2 class="section-title">Different questions.<br /><em>Connected ideas.</em></h2>
@@ -71,7 +76,7 @@ const topics = [
             </div>
             <div class="topic-panels">
               {topics.map((topic,index)=><article role="tabpanel" id={`panel-${topic.id}`} aria-labelledby={`tab-${topic.id}`} tabindex="0" hidden={index!==0}>
-                <figure class="research-figure"><img src={`/research/${topic.image}`} width="600" height="360" alt={topic.imageAlt} /><figcaption>{topic.caption}<span>Conceptual schematic</span></figcaption></figure>
+                <figure class="research-figure"><div class="research-image">{topic.id === 'disorder' ? <RVBResonance /> : topic.id === 'collective' ? <SpinWave /> : <AndersonLocalization />}</div><figcaption>{topic.caption}<span>{topic.id === 'geometry' ? 'Model visualization' : 'Conceptual schematic'}</span></figcaption></figure>
                 <p class="micro topic-tags">{topic.tags}</p><h3>{topic.subtitle}</h3><p class="topic-description">{topic.text}</p><a class="research-paper-link" href={topic.link} target="_blank" rel="noopener noreferrer">{topic.linkText} <span>↗</span></a>
               </article>)}
             </div>
@@ -115,6 +120,8 @@ const topics = [
       </main>
     </div>
 
+    <script src="/motion.js" is:inline></script>
+    <script src="/anderson.js" is:inline></script>
     <script src="/interactions.js" is:inline></script>
     <script type="module" src="/artwork.js" is:inline></script>
   </body>

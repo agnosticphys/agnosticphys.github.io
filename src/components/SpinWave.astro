@@ -1,0 +1,41 @@
+---
+// Fixed-length conical spin precession S=(sin(theta)cos(phi),
+// sin(theta)sin(phi),cos(theta)), phi=q.r-omega.t. Projection and
+// speed are illustrative; this is not a dispersion/dynamics calculation.
+const theta=.48, duration=7;
+function projected(phi:number){
+ const sx=Math.sin(theta)*Math.cos(phi),sy=Math.sin(theta)*Math.sin(phi),sz=Math.cos(theta);
+ const dx=37*sx+17*sy,dy=-4.6*sx+23*sy-48*sz;
+ return `rotate(${Math.atan2(dx,-dy)*180/Math.PI}deg) scaleY(${Math.hypot(dx,dy)/44})`;
+}
+const spins=Array.from({length:40},(_,n)=>{
+ const i=n%8,j=Math.floor(n/8),phase=i*.8+j*.22;
+ return {x:72+i*49+j*23,y:151+j*31-i*6,phase};
+});
+const bonds:number[][]=[];
+spins.forEach((_,n)=>{if(n%8<7)bonds.push([n,n+1]);if(n<32)bonds.push([n,n+8]);});
+const frames='@keyframes spinwave-precession{'+Array.from({length:49},(_,k)=>`${k/48*100}%{transform:${projected(-k/48*2*Math.PI)}}`).join('')+'}';
+---
+<svg class="spinwave-figure" viewBox="0 0 600 360" role="img" aria-labelledby="spinwave-title spinwave-desc">
+  <title id="spinwave-title">A collective spin wave</title>
+  <desc id="spinwave-desc">A perspective view of an ordered magnetic lattice. Forty fixed-length spins precess on cones with a spatial phase gradient, illustrating a travelling spin wave. The lattice sites remain fixed. This is a schematic collective magnetic mode, not a calculated spectrum or a result attributed to a specific material.</desc>
+  <defs>
+    <linearGradient id="spinwave-paper" x2=".3" y2="1"><stop stop-color="#efe4cf"/><stop offset="1" stop-color="#d7dfc8"/></linearGradient>
+    <radialGradient id="spinwave-site" cx=".3" cy=".2"><stop stop-color="#fff6df"/><stop offset=".4" stop-color="#9eaf8b"/><stop offset="1" stop-color="#3f5d48"/></radialGradient>
+    <pattern id="spinwave-grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#677a5a" stroke-opacity=".09" stroke-width=".7"/></pattern>
+  </defs>
+  <rect width="600" height="360" fill="url(#spinwave-paper)"/>
+  <rect width="600" height="360" fill="url(#spinwave-grid)"/>
+  <path d="M45 151 L425 104 L542 282 L163 324 Z" fill="#91a887" opacity=".08"/>
+  <g class="spinwave-lattice" aria-hidden="true">{bonds.map(([i,j])=><line x1={spins[i].x} y1={spins[i].y} x2={spins[j].x} y2={spins[j].y}/>)}</g>
+  <g aria-hidden="true">{spins.map(p=><g transform={`translate(${p.x} ${p.y})`}>
+    <ellipse cx="4" cy="4" rx="8" ry="3.5" fill="#355f4820"/>
+    <circle r="5.1" fill="url(#spinwave-site)"/>
+    <g class="spinwave-arrow" style={`animation-delay:${p.phase/(2*Math.PI)*duration-duration*2}s;transform:${projected(p.phase)}`}>
+      <path class="spinwave-stem" d="M0 0 L0 -36"/>
+      <path class="spinwave-highlight" d="M-1 0 L-1 -35"/>
+      <path class="spinwave-tip" d="M0 -44 L5 -33 L0 -35 L-5 -33 Z"/>
+    </g>
+  </g>)}</g>
+</svg>
+<style is:inline set:html={frames}></style>

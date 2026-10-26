@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 from math import sin, cos, exp, sqrt, pi
 
 OUT = Path(__file__).resolve().parents[1] / 'public' / 'research'
@@ -41,6 +42,9 @@ def start(title,desc,num,heading):
 def finish(items,filename,footer):
     items += ['<rect width="600" height="360" fill="url(#scan)" pointer-events="none"/>',line(23,321,577,321,opacity=.22),text(23,342,footer,10),text(577,342,'P.W.Z.',9,anchor='end',opacity=.5),'</svg>']
     (OUT/filename).write_text('\n'.join(items))
+    if filename == 'topology-disorder.svg':
+        # Decorative website version: retain accessible metadata, remove visible labels.
+        (OUT/'topology-disorder-art.svg').write_text(re.sub(r'<text\b[^>]*>.*?</text>', '', '\n'.join(items), flags=re.S))
 
 # 01: A qualitative wavefunction-intensity envelope above a bipartite lattice.
 # Disorder lives on nearest-neighbor hopping bonds; no onsite random potential

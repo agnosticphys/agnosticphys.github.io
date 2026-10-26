@@ -1,0 +1,26 @@
+{
+  "model": "H=-sum_<ij>(|i><j|+h.c.)+sum_i V_i|i><i|; open square lattice, hbar=t_hop=a=1",
+  "scope": "Generic onsite Anderson disorder; this does not preserve chiral symmetry and is not a simulation of the linked research paper.",
+  "N": 25,
+  "W": 18.0,
+  "seed": 27,
+  "distribution": "Uniform [-9,9], central crop of seed-27 29x29 disorder realization",
+  "initial_state": "Normalized real Gaussian amplitude exp(-r^2/2)",
+  "time_range": [
+    0,
+    40
+  ],
+  "frames": 201,
+  "norm_error": 3.3306690738754696e-15,
+  "max_outer_two_layers_probability": 0.00032853557831252577,
+  "max_L1_difference_to_29x29_central_crop_at_11_times": 0.000787158783155942,
+  "rms_initial": 0.9989786092132511,
+  "rms_t4": 2.0639987568348315,
+  "rms_t40": 2.4406645637451474,
+  "rms_max": 2.6300889990773513,
+  "clean_rms_t4": 6.438375334074397,
+  "min_probability_within_radius_6": 0.9476616998538472,
+  "interpretation": "Finite sample and time-window illustration, with a larger-lattice boundary check; not a thermodynamic proof or convergence of a localization length.",
+  "visualization": "Site probability controls color and positive height via fixed sqrt/asinh scales. Spatial interpolation, lighting and playback speed are display choices. The loop fades before a fresh replay; it does not reverse physical time.",
+  "float32_max_error": 2.0222565400018766e-08
+}
