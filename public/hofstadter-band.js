@@ -1,16 +1,15 @@
 import { HH_MODEL } from './hofstadter/metadata.js';
 export { HH_MODEL };
 
-const response = await fetch(new URL('./hofstadter/field.bin', import.meta.url));
+const response = await fetch(new URL('./hofstadter/curvature.bin', import.meta.url));
 if (!response.ok) throw new Error('Unable to load the Harper–Hofstadter band data.');
 const buffer = await response.arrayBuffer();
 const n = HH_MODEL.N, count = n * n;
-if (buffer.byteLength !== count * 8) throw new Error('Unexpected Hofstadter data size.');
+if (buffer.byteLength !== count * 4) throw new Error('Unexpected Hofstadter data size.');
 const view = new DataView(buffer);
-const energy = new Float32Array(count), curvature = new Float32Array(count);
+const curvature = new Float32Array(count);
 for (let i = 0; i < count; i++) {
-  energy[i] = view.getFloat32(i * 4, true);
-  curvature[i] = view.getFloat32((i + count) * 4, true);
+  curvature[i] = view.getFloat32(i * 4, true);
 }
 const TAU = Math.PI * 2;
 const periodic = x => ((x % TAU) + TAU) % TAU / TAU * n;
@@ -22,7 +21,7 @@ export function bandData(u, v) {
   const i = Math.floor(x), j = Math.floor(y), a = x - i, b = y - j;
   const i1 = (i + 1) % n, j1 = (j + 1) % n;
   const sample = data => (1-a)*((1-b)*data[i*n+j]+b*data[i*n+j1]) + a*((1-b)*data[i1*n+j]+b*data[i1*n+j1]);
-  return { energy: sample(energy), curvature: sample(curvature) };
+  return { curvature: sample(curvature) };
 }
 
 export function bandPoint(u, v) {

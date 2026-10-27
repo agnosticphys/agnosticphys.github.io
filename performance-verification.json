@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-27",
+  "network_scope": "Cold first-view request payloads from Safari on the same desktop viewport, using two local production-build snapshots with gzip enabled. No scrolling before the snapshot. Includes favicon requests; does not measure internet latency, LCP, INP or CLS.",
+  "before_transfer_bytes": 1772178,
+  "after_transfer_bytes": 331613,
+  "before_requests": 21,
+  "after_requests": 16,
+  "anderson_deferred_until_research": true,
+  "curvature_payload_exact": true,
+  "full_mesh_faces": 7680,
+  "hero_compute_benchmark": {
+    "scope": "Node rendering-logic only; no-op canvas excludes actual browser painting. 80 frames after 20-frame warmup; same 7680 faces.",
+    "before": {
+      "median_ms": 24.484665999999834,
+      "p95_ms": 26.263374999999996
+    },
+    "after": {
+      "median_ms": 3.819332999999915,
+      "p95_ms": 3.8945420000000013
+    },
+    "coordinate_pairs": 30796,
+    "rounded_coordinate_mismatches": 0
+  },
+  "first_view_transfer_reduction_percent": 81.29
+}

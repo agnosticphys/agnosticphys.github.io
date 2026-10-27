@@ -12,6 +12,10 @@ import '../styles/motion.css';
 import AndersonLocalization from '../components/AndersonLocalization.astro';
 import RVBResonance from '../components/RVBResonance.astro';
 import SpinWave from '../components/SpinWave.astro';
+import { Image, getImage } from 'astro:assets';
+import raven from '../../public/brand/raven-orbit.png';
+import displayFont from '@fontsource/bodoni-moda/files/bodoni-moda-latin-600-normal.woff2?url';
+const favicon = await getImage({ src: raven, width: 64, format: 'png' });
 import { publications, profile } from '../data/publications';
 const journalCount = publications.filter(p => p.kind === 'journal').length;
 const preprintCount = publications.length - journalCount;
@@ -30,14 +34,15 @@ const topics = [
     <meta name="robots" content={import.meta.env.PUBLIC_SITE_INDEXABLE === 'true' ? 'index,follow' : 'noindex,nofollow'} />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
     <title>P. W. Zhao — Quantum matter, unexpected forms</title>
-    <link rel="icon" type="image/png" href="/brand/raven-orbit.png" />
+    <link rel="icon" type="image/png" href={favicon.src} />
+    <link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <div class="reading-progress" aria-hidden="true"></div>
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="page-frame">
       <header class="header">
-        <a class="identity" href="#" aria-label="P. W. Zhao home"><img class="brand-logo" src="/brand/raven-orbit.png" width="48" height="48" alt="" /><span>PWZ<span class="identity-dot">.</span></span></a>
+        <a class="identity" href="#" aria-label="P. W. Zhao home"><Image class="brand-logo" src={raven} width={48} height={48} densities={[1,2]} format="webp" quality={85} loading="eager" alt="" /><span>PWZ<span class="identity-dot">.</span></span></a>
         <nav aria-label="Main navigation">
           <a href="#research">Research <span>01</span></a>
           <a href="#publications">Publications <span>02</span></a>
@@ -48,7 +53,7 @@ const topics = [
       <main id="main">
         <section class="hero" aria-labelledby="hero-title">
           <div class="hero-eyebrow"><span><i></i> THEORETICAL CONDENSED MATTER PHYSICS</span><span class="prototype-tag">HKUST / HONG KONG</span></div>
-          <h1 id="hero-title"><span class="hero-name">P. W. ZHAO</span><img class="title-logo" src="/brand/raven-orbit.png" width="180" height="180" alt="" /></h1>
+          <h1 id="hero-title"><span class="hero-name">P. W. ZHAO</span><Image class="title-logo" src={raven} width={224} height={224} densities={[1,2]} format="webp" quality={85} loading="eager" fetchpriority="high" alt="" /></h1>
           <div class="hero-bottom">
             <div class="hero-copy">
               <p class="micro">A FIELD GUIDE TO QUANTUM MATTER</p>
@@ -115,14 +120,15 @@ const topics = [
         </section>
         <footer id="contact" class="footer">
           <div class="footer-top"><p>There is always<br /><em>another question.</em></p><div class="contact-details"><a href={`mailto:${profile.email}`} class="footer-contact">{profile.email} <span>↗</span></a><p>Department of Physics<br />The Hong Kong University of Science and Technology</p></div></div>
-          <div class="footer-bottom"><a class="identity" href="#"><img class="brand-logo" src="/brand/raven-orbit.png" width="48" height="48" alt="" />PWZ.</a><span>© 2026 P. W. ZHAO</span><a href="#">BACK TO THE TOP ↑</a></div>
+          <div class="footer-bottom"><a class="identity" href="#"><Image class="brand-logo" src={raven} width={48} height={48} densities={[1,2]} format="webp" quality={85} loading="eager" alt="" />PWZ.</a><span>© 2026 P. W. ZHAO</span><a href="#">BACK TO THE TOP ↑</a></div>
         </footer>
       </main>
     </div>
 
-    <script src="/motion.js" is:inline></script>
-    <script src="/anderson.js" is:inline></script>
-    <script src="/interactions.js" is:inline></script>
-    <script type="module" src="/artwork.js" is:inline></script>
+    <script>
+      import "../../public/motion.js";
+      import "../../public/interactions.js";
+      import "../../public/visualizations.js";
+    </script>
   </body>
 </html>

@@ -59,6 +59,8 @@ if __name__=='__main__':
   e,f=r['energy'],r['curvature']
   field=np.concatenate([e.ravel(),f.ravel()]).astype('<f4')
   (out/'field.bin').write_bytes(field.tobytes())
+  # The renderer needs curvature only; preserve the full reference data too.
+  (out/'curvature.bin').write_bytes(field.tobytes()[r['N']**2*4:])
   serializedC=float(field[r['N']**2:].astype(float).mean()*2*np.pi/r['q'])
   assert abs(serializedC+2)<1e-6
   meta={k:r[k] for k in ['p','q','N','band','Ckubo','Cfhs','gap','max_plaquette_phase']}
