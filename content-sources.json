@@ -6,7 +6,7 @@
     "orcid": "https://orcid.org/0009-0007-0862-5960",
     "affiliation_source": "Google Scholar profile: Department of Physics, Hong Kong University of Science and Technology; verified ust.hk email domain",
     "email_source": "Public ORCID record: pwzhao@ust.hk",
-    "rank_and_education": "Not asserted. Owner requested prioritizing papers and keeping biography brief. No current academic rank or degree dates were supplied."
+    "rank_and_education": "Owner confirmed a PhD in Physics from Peking University in this project conversation on 2026-10-27. Graduation date and current academic rank are not supplied and are not asserted."
   },
   "scope": {
     "scholar_records": 13,
@@ -125,6 +125,6 @@
       "generator": "scripts/generate-anderson.py"
     }
   ],
-  "research_copy": "Original short synthesis of the linked publications, written for the website. Does not assert results from unpublished private projects.",
+  "research_copy": "Original short synthesis of the linked publications, written for the website. Owner confirmed quantum geometry as the only recent direction to mention on 2026-10-27; local homepage and research copy describe it as an interest being explored, without asserting unpublished results.",
   "disambiguation": "Several other Pengwei Zhao profiles concern nuclear physics or cosmic-ray physics. Their publications, appointments, and educational histories were excluded. Identity is anchored to the two identifiers supplied by the owner."
 }
